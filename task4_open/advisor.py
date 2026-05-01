@@ -1,9 +1,7 @@
 import os
-
 from dotenv import load_dotenv
 import google.generativeai as genai
-
-from task3_ai.prompt_builder import build_prompt
+from task4_open.prompt_templates import advisor_prompt
 
 load_dotenv()
 
@@ -18,11 +16,8 @@ model = genai.GenerativeModel(
 )
 
 
-def generate_explanation(portfolio: dict, risk_metrics: dict, tone="beginner"):
-    """
-    Calls LLM and returns raw response
-    """
-    prompt = build_prompt(portfolio, risk_metrics, tone)
+def generate_advice(portfolio, risk_metrics, user_goal):
+    prompt = advisor_prompt(portfolio, risk_metrics, user_goal)
 
     response = model.generate_content(
         prompt,

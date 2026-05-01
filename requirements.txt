@@ -3,4 +3,4 @@ yfinance
 requests
 python-dotenv
 tabulate
-openai
+google-generativeai

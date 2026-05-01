@@ -24,3 +24,5 @@ ENV/
 env/
 .vscode/
 .DS_Store
+
+.early.coverage

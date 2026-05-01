@@ -1,9 +1,7 @@
 import os
-
 from dotenv import load_dotenv
 import google.generativeai as genai
-
-from task3_ai.prompt_builder import build_prompt
+from task4_open.prompt_templates import critic_prompt
 
 load_dotenv()
 
@@ -14,19 +12,16 @@ if not api_key:
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel(
     "gemini-2.5-flash",
-    system_instruction="You are a financial advisor.",
+    system_instruction="You are a financial auditor.",
 )
 
 
-def generate_explanation(portfolio: dict, risk_metrics: dict, tone="beginner"):
-    """
-    Calls LLM and returns raw response
-    """
-    prompt = build_prompt(portfolio, risk_metrics, tone)
+def critique_advice(advice_text, portfolio, risk_metrics):
+    prompt = critic_prompt(advice_text, portfolio, risk_metrics)
 
     response = model.generate_content(
         prompt,
-        generation_config={"temperature": 0.5},
+        generation_config={"temperature": 0.3},
     )
 
     return response.text
