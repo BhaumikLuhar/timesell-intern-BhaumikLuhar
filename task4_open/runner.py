@@ -1,7 +1,17 @@
 from task1_risk.risk_calculator import compute_risk_metrics
 from task4_open.advisor import generate_advice
 from task4_open.critic import critique_advice
+from task4_open.validator import is_valid_financial_goal
 
+def get_valid_goal():
+    while True:
+        goal = input("\nEnter your financial goal: ")
+
+        if is_valid_financial_goal(goal):
+            return goal
+        else:
+            print("\n❌ Invalid input.")
+            print("👉 Please enter a financial goal (e.g., retirement planning, reducing risk, stable income).")
 
 def run_ai_advisor_system(portfolio):
     print("\n" + "=" * 60)
@@ -12,7 +22,7 @@ def run_ai_advisor_system(portfolio):
     risk_metrics = compute_risk_metrics(portfolio)
 
     # Step 2 — Ask user goal
-    user_goal = input("\nEnter your financial goal: ")
+    user_goal = get_valid_goal()
 
     try:
         # Step 3 — Advisor

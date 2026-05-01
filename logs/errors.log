@@ -4,4 +4,5 @@ logging.basicConfig(
     filename="logs/errors.log",
     level=logging.ERROR,
     format="%(asctime)s - %(levelname)s - %(message)s"
-)
+)2026-05-01 17:46:13,094 - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: NIFTY50"}}}
+2026-05-01 17:46:14,013 - ERROR - $NIFTY50: possibly delisted; no price data found  (period=1d) (Yahoo error = "No data found, symbol may be delisted")
