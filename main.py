@@ -44,7 +44,9 @@ def run_full_analysis(portfolio, name):
     # 🔵 Task 1
     print("\n--- TASK 1: RISK METRICS ---\n")
     risk_metrics = compute_risk_metrics(portfolio)
-    print(risk_metrics)
+    print("=== Risk Metrics ===\n")
+    for key, value in risk_metrics.items():
+        print(f"{key}: {value}")
     print_allocation_chart(portfolio["assets"])
 
     # 🔵 Task 2
