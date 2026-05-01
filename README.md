@@ -136,7 +136,7 @@ timecell-intern-bhaumik/
 - Python 3.10+
 - `yfinance` (stocks)
 - `CoinGecko API` (crypto)
-- `OpenAI API` (LLM)
+- `google-generativeai API` (LLM)
 - `tabulate` (CLI output)
 - `python-dotenv` (env management)
 
