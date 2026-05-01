@@ -28,17 +28,12 @@ INSTRUCTIONS:
 - Do NOT use jargon unless tone = expert.
 - Be specific (mention assets like BTC, NIFTY, etc.)
 
-OUTPUT FORMAT (STRICT — FOLLOW EXACTLY):
+OUTPUT FORMAT (IMPORTANT — RESPOND WITH ONLY THE JSON OBJECT, NO MARKDOWN CODE FENCES, NO BACKTICKS, NO EXPLANATION):
 
-SUMMARY:
-(3-4 sentences explaining overall risk)
-
-GOOD:
-(One thing the investor is doing well)
-
-IMPROVE:
-(One specific improvement + why)
-
-VERDICT:
-(Only one word: Aggressive / Balanced / Conservative)
+{{
+  "summary": "3-4 sentences explaining overall risk",
+  "good": "One thing the investor is doing well",
+  "improve": "One specific improvement + why",
+  "verdict": "Only one word: Aggressive / Balanced / Conservative"
+}}
 """

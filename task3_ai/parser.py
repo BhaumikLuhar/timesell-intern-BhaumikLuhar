@@ -3,7 +3,7 @@ import re
 
 def parse_explanation(text: str) -> dict:
     """
-    Parses structured output from LLM response.
+    Parses structured output from LLM response (legacy - for text format).
     """
 
     sections = {
@@ -36,3 +36,39 @@ def parse_explanation(text: str) -> dict:
         sections[key] = sections[key].strip()
 
     return sections
+
+
+def format_explanation(explanation: dict) -> str:
+    """
+    Formats JSON explanation dict for pretty printing.
+    """
+    if "error" in explanation:
+        return f"\n⚠️  Error: {explanation['error']}\n"
+
+    formatted = "\n" + "=" * 60 + "\n"
+    formatted += "📊 PORTFOLIO EXPLANATION\n"
+    formatted += "=" * 60 + "\n\n"
+
+    # Summary
+    if "summary" in explanation:
+        formatted += "📋 SUMMARY:\n"
+        formatted += f"{explanation['summary']}\n\n"
+
+    # Good
+    if "good" in explanation:
+        formatted += "✅ STRENGTHS:\n"
+        formatted += f"{explanation['good']}\n\n"
+
+    # Improve
+    if "improve" in explanation:
+        formatted += "⚡ IMPROVEMENTS:\n"
+        formatted += f"{explanation['improve']}\n\n"
+
+    # Verdict
+    if "verdict" in explanation:
+        formatted += "🎯 VERDICT:\n"
+        formatted += f"{explanation['verdict']}\n"
+
+    formatted += "=" * 60 + "\n"
+
+    return formatted

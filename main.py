@@ -10,7 +10,7 @@ from task2_market.formatter import print_price_table
 
 # Task 3
 from task3_ai.explainer import generate_explanation
-from task3_ai.parser import parse_explanation
+from task3_ai.parser import parse_explanation, format_explanation
 
 # Task 4
 from task4_open.runner import run_ai_advisor_system
@@ -56,8 +56,15 @@ def run_full_analysis(portfolio, name):
 
     # 🔵 Task 3
     print("\n--- TASK 3: AI EXPLANATION ---\n")
-    raw_output = generate_explanation(portfolio, risk_metrics)
-    print("\nRAW OUTPUT:\n", raw_output)
+    explanation = generate_explanation(portfolio, risk_metrics)
+
+    # Print raw JSON data
+    print("📋 RAW JSON DATA:")
+    import json
+    print(json.dumps(explanation, indent=2))
+
+    # Print formatted explanation
+    print("\n" + format_explanation(explanation))
 
     # 🔵 Task 4
     print("\n--- TASK 4: AI DECISION SYSTEM ---\n")
